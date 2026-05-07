@@ -3,269 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AGBSK - Certificate Verification</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <title>AGBSK - Premium Certificate Verification</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Blank clear white background */
+        /* خلفية بيضاء صافية تماماً */
         body {
             background-color: #ffffff;
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Outfit', 'Tajawal', sans-serif;
             margin: 0;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #333;
+            color: #1e293b;
+            padding: 20px;
         }
 
+        /* الغلاف الخارجي لعمل تأثير الإضاءة المتحركة */
+        .card-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 24px;
+            padding: 4px;
+            background: linear-gradient(135deg, #e2e8f0, #ffffff, #e2e8f0);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        .card-wrapper:hover {
+            box-shadow: 0 30px 60px rgba(0, 51, 102, 0.15);
+            background: linear-gradient(135deg, #003366, #00a8ff, #003366);
+            animation: gradientBorder 3s ease infinite;
+        }
+
+        @keyframes gradientBorder {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* الكارت الداخلي الأساسي */
         .container {
             background-color: #ffffff;
-            padding: 50px 45px;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            border: 1px solid #e2e8f0;
-            text-align: center;
-            width: 100%;
-            max-width: 550px;
-        }
-
-        .header-title {
-            color: #002244;
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 5px;
-            letter-spacing: 1px;
-        }
-        
-        .sub-title {
-            color: #64748b;
-            font-size: 16px;
-            font-weight: 500;
-            margin-bottom: 40px;
-        }
-
-        .input-wrapper {
-            margin-bottom: 25px;
-        }
-
-        input {
-            width: 100%;
-            padding: 18px 25px;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            font-size: 16px;
-            font-family: 'Tajawal', sans-serif;
-            text-align: center;
-            box-sizing: border-box;
-            transition: all 0.3s ease;
-            background-color: #f8fafc;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: #003366;
-            background-color: #ffffff;
-            box-shadow: 0 0 0 4px rgba(0, 51, 102, 0.1);
-        }
-
-        input::placeholder {
-            color: #94a3b8;
-        }
-
-        button {
-            background: #003366;
-            color: white;
-            border: none;
-            padding: 18px 40px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 17px;
-            font-weight: 700;
-            font-family: 'Tajawal', sans-serif;
-            width: 100%;
-            transition: all 0.3s ease;
-        }
-
-        button:hover {
-            background: #002244;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 15px rgba(0, 51, 102, 0.2);
-        }
-
-        #result {
-            margin-top: 35px;
-            font-size: 15px;
-            line-height: 1.7;
-            text-align: left;
-            display: none;
-        }
-
-        .success-box {
-            padding: 25px;
-            border-radius: 12px;
-            background-color: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-left: 5px solid #28a745;
-        }
-
-        .error-box {
-            padding: 20px;
-            border-radius: 12px;
-            background-color: #fff5f5;
-            color: #e53e3e;
-            border: 1px solid #fed7d7;
-            text-align: center;
-            font-weight: 700;
-        }
-
-        .status-badge {
-            display: inline-block;
-            background-color: #d4edda;
-            color: #155724;
-            padding: 6px 15px;
+            padding: 55px 45px;
             border-radius: 20px;
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .data-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin-top: 15px;
-        }
-
-        .data-table th, .data-table td {
-            padding: 14px 10px;
-            text-align: left;
-            border-bottom: 1px solid #edf2f7;
-        }
-
-        .data-table tr:last-child th,
-        .data-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .data-table th {
-            width: 40%;
-            color: #64748b;
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        .data-table td {
-            color: #1e293b;
-            font-weight: 600;
-        }
-
-        .cert-highlight {
-            font-family: monospace;
-            font-size: 15px;
-            color: #003366;
-            background: #f1f5f9;
-            padding: 4px 8px;
-            border-radius: 4px;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <div class="header-title">AGBSK</div>
-        <div class="sub-title">Training Certificate Verification</div>
-        
-        <div class="input-wrapper">
-            <input type="text" id="certInput" placeholder="Enter Certificate No. (e.g., 4317-AGBSK-CSE-AWR)">
-        </div>
-        
-        <button onclick="verifyCertificate()">Verify Certificate</button>
-        
-        <div id="result"></div>
-    </div>
-
-    <script>
-        // The ID of the AGBSK specific Google Sheet
-        const sheetId = '15Zh7A9yyp1A6SN8vurtVM5n7Jc4E5SFD0zl07QnBoY8';
-        const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`;
-
-        function getVal(row, index) {
-            if (!row || !row.c || !row.c[index] || row.c[index].v === null) return '<span style="color:#cbd5e1;">N/A</span>';
-            return row.c[index].f ? row.c[index].f : row.c[index].v;
-        }
-
-        async function verifyCertificate() {
-            const certNoInput = document.getElementById('certInput').value.trim().toUpperCase();
-            const resultDiv = document.getElementById('result');
-            
-            if (!certNoInput) {
-                showResult('⚠️ Please enter a certificate number.', 'error-box');
-                return;
-            }
-
-            showResult('⏳ Searching database...', 'success-box');
-            
-            try {
-                const response = await fetch(url);
-                if (!response.ok) throw new Error('Network response was not ok');
-                
-                const text = await response.text();
-                const jsonString = text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1);
-                const data = JSON.parse(jsonString);
-                const rows = data.table.rows;
-                
-                let isFound = false;
-
-                // Columns for AGBSK: NAME(0), COURSE(1), DATE(2), EXPIRY(3), CERTNO(4), INSTRUCTOR(5)
-                for (let i = 0; i < rows.length; i++) {
-                    // Extracting CERTNO from index 4
-                    const certNoCell = getVal(rows[i], 4).toString().replace(/<[^>]*>?/gm, '').trim().toUpperCase(); 
-                    
-                    if (certNoCell === certNoInput) {
-                        isFound = true;
-                        
-                        const name = getVal(rows[i], 0);
-                        const course = getVal(rows[i], 1);
-                        const date = getVal(rows[i], 2);
-                        const expiry = getVal(rows[i], 3);
-                        const instructor = getVal(rows[i], 5);
-
-                        showResult(`
-                            <div style="text-align: center;">
-                                <div class="status-badge">✓ Valid Certificate</div>
-                            </div>
-                            <table class="data-table">
-                                <tr><th>Certificate No.</th><td><span class="cert-highlight">${certNoCell}</span></td></tr>
-                                <tr><th>Trainee Name</th><td>${name}</td></tr>
-                                <tr><th>Course Name</th><td style="color:#003366;"><strong>${course}</strong></td></tr>
-                                <tr><th>Issue Date</th><td>${date}</td></tr>
-                                <tr><th>Expiry Date</th><td>${expiry}</td></tr>
-                                <tr><th>Instructor</th><td>${instructor}</td></tr>
-                            </table>
-                        `, 'success-box');
-                        break; 
-                    }
-                }
-
-                if (!isFound) {
-                    showResult('❌ Certificate number is not found or invalid.', 'error-box');
-                }
-
-            } catch (error) {
-                console.error("Fetch Error:", error);
-                showResult('⚠️ Connection error. Please make sure the sheet sharing setting is "Anyone with the link".', 'error-box');
-            }
-        }
-
-        // Trigger search on Enter key press
-        document.getElementById("certInput").addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                verifyCertificate();
-            }
-        });
-    </script>
-
-</body>
-</html>
+            text-align: center;
+            position: relative;
+            z-index: 10
